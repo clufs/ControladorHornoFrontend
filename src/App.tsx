@@ -1,6 +1,5 @@
 import { Header } from "./components/Header";
 import { TemperatureCard } from "./components/TemperatureCard";
-import { FaseCard } from "./components/FaseCard";
 import { StatusCard } from "./components/StatusCard";
 import { BakingHoursCard } from "./components/BakingHoursCard";
 import { InfoCard } from "./components/InfoCard";
@@ -9,10 +8,9 @@ import { ControlPanel } from "./components/ControlPanel";
 import { PerfilEditor } from "./components/PerfilEditor";
 import { useHorno } from "./hooks/useHorno";
 import { useHistorial } from "./hooks/useHistorial";
-import { usePhaseTimer } from "./hooks/usePhaseTimer";
 
 export default function App() {
-  const { currentLectura, currentTemp, history, isConnected, trend, controlStatus } = useHorno();
+  const { currentLectura, currentTemp, history, isConnected, isEspConnected, trend, controlStatus } = useHorno();
   const {
     historial,
     currentRate,
@@ -23,8 +21,6 @@ export default function App() {
     windowOptions,
   } = useHistorial();
 
-  const timer = usePhaseTimer(currentLectura?.fase_actual);
-
   const latestEntries = history.slice(-10).reverse();
 
   return (
@@ -33,18 +29,11 @@ export default function App() {
 
       <div className="status-pill">
         <StatusCard isConnected={isConnected} />
+        <StatusCard isConnected={isEspConnected} label="ESP8266" />
       </div>
 
       <div className="top-row">
         <TemperatureCard label="T1" temp={currentTemp} trend={trend} />
-        <FaseCard
-          fase={currentLectura?.fase_actual ?? null}
-          timerRemainingSec={timer.remainingSec}
-          timerRunning={timer.isRunning}
-          timerDurationMin={timer.durationMin}
-          onTimerDurationChange={timer.setDurationMin}
-          onTimerReset={timer.reset}
-        />
         <BakingHoursCard totalSeconds={currentLectura?.tiempo_s ?? null} />
       </div>
 

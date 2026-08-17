@@ -35,16 +35,28 @@ const DEFAULT_CONTROL: ControlStatus = {
   enMantencion: false,
 };
 
+const ESP_TIMEOUT_MS = 10000;
+
 export function useHorno() {
   const [currentLectura, setCurrentLectura] = useState<LecturaHorno | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [isConnected, setIsConnected] = useState(socket.connected);
+  const [isEspConnected, setIsEspConnected] = useState(false);
   const [trend, setTrend] = useState<Trend>("stable");
   const [controlStatus, setControlStatus] = useState<ControlStatus>(DEFAULT_CONTROL);
   const historyRef = useRef<HistoryEntry[]>([]);
   const prevTempRef = useRef<number | null>(null);
+  const espTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const resetEspTimer = useCallback(() => {
+    setIsEspConnected(true);
+    if (espTimerRef.current) clearTimeout(espTimerRef.current);
+    espTimerRef.current = setTimeout(() => setIsEspConnected(false), ESP_TIMEOUT_MS);
+  }, []);
 
   const handleLectura = useCallback((data: LecturaHorno) => {
+    resetEspTimer();
+
     const entry: HistoryEntry = {
       id: String(++counter),
       temp: data.temp_c,
@@ -65,7 +77,7 @@ export function useHorno() {
     setCurrentLectura(data);
     historyRef.current = [...historyRef.current.slice(-(MAX_HISTORY - 1)), entry];
     setHistory(historyRef.current);
-  }, []);
+  }, [resetEspTimer]);
 
   const handleStatus = useCallback((data: ControlStatus) => {
     setControlStatus(data);
@@ -92,10 +104,11 @@ export function useHorno() {
       socket.off("lectura", handleLectura);
       socket.off("status", handleStatus);
       socket.disconnect();
+      if (espTimerRef.current) clearTimeout(espTimerRef.current);
     };
   }, [handleLectura, handleStatus]);
 
   const currentTemp = currentLectura?.temp_c ?? null;
 
-  return { currentLectura, currentTemp, history, isConnected, trend, controlStatus };
+  return { currentLectura, currentTemp, history, isConnected, isEspConnected, trend, controlStatus };
 }
