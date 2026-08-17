@@ -87,7 +87,11 @@ export function PerfilEditor() {
     setGuardando(true);
     try {
       const tempMax = Math.max(...segmentos.map((s) => s.target));
-      const duracion = segmentos.reduce((acc, s) => acc + (s.target / s.rate) + s.hold, 0);
+      const duracion = segmentos.reduce((acc, s, i) => {
+        const prevTarget = i > 0 ? segmentos[i - 1].target : 0;
+        const delta = Math.abs(s.target - prevTarget);
+        return acc + (s.rate > 0 ? delta / s.rate : 0) + s.hold;
+      }, 0);
 
       const data = {
         hornoId: HORNO_ID,
@@ -124,8 +128,10 @@ export function PerfilEditor() {
     }
   }
 
-  const duracionTotal = segmentos.reduce((acc, s) => {
-    const rampa = s.rate > 0 ? (s.target / s.rate) : 0;
+  const duracionTotal = segmentos.reduce((acc, s, i) => {
+    const prevTarget = i > 0 ? segmentos[i - 1].target : 0;
+    const delta = Math.abs(s.target - prevTarget);
+    const rampa = s.rate > 0 ? (delta / s.rate) : 0;
     return acc + rampa + s.hold;
   }, 0);
 
