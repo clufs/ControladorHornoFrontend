@@ -15,39 +15,46 @@ body {
   background-color: #0d1117;
   color: #e6edf3;
   min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* ---------- Layout ---------- */
+/* ---------- Layout (mobile first) ---------- */
 
 .app {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 1rem 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .top-row {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
 }
 
 .bottom-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.control-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 /* ---------- Header ---------- */
 
 .header {
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
 }
 
 .header__title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
@@ -57,8 +64,8 @@ body {
 .card {
   background-color: #161b22;
   border: 1px solid #30363d;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 10px;
+  padding: 1rem;
 }
 
 /* ---------- Temperature Card ---------- */
@@ -68,34 +75,35 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .temperature-card__label {
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .temperature-card__value {
-  font-size: 4.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
   line-height: 1;
   display: inline-flex;
   align-items: baseline;
-  gap: 0.1em;
+  gap: 0.05em;
 }
 
 .temperature-card__unit {
-  font-size: 1.75rem;
+  font-size: 1.1rem;
   font-weight: 400;
   color: #8b949e;
 }
 
 .temperature-card__arrow {
-  font-size: 1.5rem;
-  margin-left: 0.3em;
+  font-size: 1rem;
+  margin-left: 0.2em;
 }
 
 /* ---------- Status Card ---------- */
@@ -109,14 +117,14 @@ body {
 }
 
 .status-card__label {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .status-card__indicator {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
@@ -133,8 +141,8 @@ body {
 
 .status-card__dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: currentColor;
 }
@@ -152,21 +160,21 @@ body {
   background-color: #1c2128;
   border: 1px solid #30363d;
   border-radius: 20px;
-  padding: 0.25rem 1rem;
+  padding: 0.2rem 0.8rem;
 }
 
 .status-pill .status-card__label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
 }
 
 .status-pill .status-card__indicator {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
 .status-pill .status-card__dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 /* ---------- Fase Card ---------- */
@@ -176,28 +184,29 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .fase-card__label {
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .fase-card__value {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
+  gap: 0.3em;
 }
 
 .fase-card__dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
 }
 
@@ -206,18 +215,18 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 .fase-card__timer-display {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   line-height: 1;
 }
 
 .fase-card__timer-label {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -226,18 +235,18 @@ body {
 .fase-card__timer-config {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.6rem;
+  gap: 0.3rem;
+  margin-top: 0.4rem;
 }
 
 .fase-card__timer-input {
-  width: 4rem;
+  width: 3.5rem;
   background-color: #1c2128;
   color: #e6edf3;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 0.25rem 0.5rem;
-  font-size: 0.8rem;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
   text-align: center;
   outline: none;
 }
@@ -250,9 +259,9 @@ body {
   background: none;
   border: 1px solid #30363d;
   color: #8b949e;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 6px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   cursor: pointer;
   line-height: 1;
 }
@@ -269,60 +278,48 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .baking-hours-card__label {
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .baking-hours-card__value {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #e6edf3;
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Chart Card ---------- */
-
-.chart-card {
-  padding-bottom: 1rem;
-}
-
-.chart-card__title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #e6edf3;
-}
-
 /* ---------- Historial Card ---------- */
 
 .historial-card {
-  padding-bottom: 1rem;
+  padding-bottom: 0.75rem;
 }
 
 .historial-card__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #e6edf3;
 }
 
 .historial-card__hint {
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #f0883e;
 }
 
 .historial-card__status {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: #8b949e;
   text-align: center;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 
 .historial-card__status--error {
@@ -333,19 +330,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-top: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
 
 .historial-card__control {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .historial-card__control-label {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #8b949e;
 }
 
@@ -354,8 +351,8 @@ body {
   color: #e6edf3;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.875rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.8rem;
   cursor: pointer;
   outline: none;
 }
@@ -367,16 +364,16 @@ body {
 .historial-card__rate {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .historial-card__rate-label {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #8b949e;
 }
 
 .historial-card__rate-value {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #3fb950;
   font-variant-numeric: tabular-nums;
@@ -385,30 +382,30 @@ body {
 /* ---------- Historial selection ---------- */
 
 .historial-card__sel {
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: 0.75rem;
+  padding: 0.75rem;
   background-color: #1c2128;
   border: 1px solid #30363d;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 .historial-card__sel-title {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
 
 .historial-card__sel-detail {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #8b949e;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.3rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -422,7 +419,7 @@ body {
 }
 
 .historial-card__sel-rate {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #f0883e;
 }
@@ -430,33 +427,33 @@ body {
 /* ---------- Info Card ---------- */
 
 .info-card__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #e6edf3;
 }
 
 .info-card__grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1rem;
+  gap: 0.6rem;
 }
 
 .info-card__item {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.15rem;
 }
 
 .info-card__label {
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   color: #8b949e;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 }
 
 .info-card__value {
-  font-size: 1.125rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #e6edf3;
 }
@@ -464,9 +461,9 @@ body {
 /* ---------- History ---------- */
 
 .history-card__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #e6edf3;
 }
 
@@ -474,13 +471,13 @@ body {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  max-height: 180px;
+  gap: 0.2rem;
+  max-height: 160px;
   overflow-y: auto;
 }
 
 .history-list::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .history-list::-webkit-scrollbar-track {
@@ -489,14 +486,14 @@ body {
 
 .history-list::-webkit-scrollbar-thumb {
   background-color: #30363d;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
 .history-list__item {
   display: flex;
   justify-content: space-between;
-  padding: 0.3rem 0.5rem;
-  font-size: 0.875rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
   color: #8b949e;
   border-radius: 4px;
@@ -511,46 +508,38 @@ body {
   color: #e6edf3;
 }
 
-/* ---------- Control Row ---------- */
-
-.control-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 1.5rem;
-}
-
 /* ---------- Control Panel ---------- */
 
 .control-panel__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   color: #e6edf3;
 }
 
 .control-panel__status {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
 }
 
 .control-panel__ssr {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .control-panel__label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: #8b949e;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 .control-panel__dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background-color: #484f58;
   transition: background-color 0.2s;
@@ -562,7 +551,7 @@ body {
 }
 
 .control-panel__ssr-text {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #8b949e;
 }
@@ -574,7 +563,7 @@ body {
 .control-panel__info {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.4rem;
 }
 
 .control-panel__info-item {
@@ -584,7 +573,7 @@ body {
 }
 
 .control-panel__value {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #e6edf3;
   font-variant-numeric: tabular-nums;
@@ -592,15 +581,15 @@ body {
 
 .control-panel__buttons {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .control-panel__btn {
   flex: 1;
-  padding: 0.6rem 1rem;
+  padding: 0.55rem 0.75rem;
   border: none;
   border-radius: 8px;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.15s, transform 0.1s;
@@ -639,27 +628,27 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .perfil-editor__title {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #e6edf3;
 }
 
 .perfil-editor__header-btns {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.3rem;
 }
 
 .perfil-editor__btn-icon {
   background: none;
   border: 1px solid #30363d;
   color: #8b949e;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   border-radius: 6px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.15rem 0.4rem;
   cursor: pointer;
 }
 
@@ -672,24 +661,24 @@ body {
   background-color: #0d1117;
   border: 1px solid #30363d;
   border-radius: 8px;
-  padding: 0.5rem;
-  margin-bottom: 0.75rem;
-  max-height: 200px;
+  padding: 0.4rem;
+  margin-bottom: 0.6rem;
+  max-height: 180px;
   overflow-y: auto;
 }
 
 .perfil-editor__empty {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #8b949e;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.4rem;
 }
 
 .perfil-editor__perfil-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.4rem 0.5rem;
+  padding: 0.35rem 0.4rem;
   border-radius: 6px;
   cursor: pointer;
 }
@@ -701,17 +690,17 @@ body {
 .perfil-editor__perfil-info {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.1rem;
 }
 
 .perfil-editor__perfil-nombre {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #e6edf3;
 }
 
 .perfil-editor__perfil-meta {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: #8b949e;
 }
 
@@ -719,9 +708,9 @@ body {
   background: none;
   border: none;
   color: #8b949e;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 0.2rem;
+  padding: 0.15rem;
 }
 
 .perfil-editor__btn-delete:hover {
@@ -731,8 +720,8 @@ body {
 .perfil-editor__fields {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.75rem;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
 }
 
 .perfil-editor__text-input {
@@ -741,7 +730,7 @@ body {
   color: #e6edf3;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 0.45rem 0.6rem;
+  padding: 0.4rem 0.5rem;
   font-size: 0.8rem;
   outline: none;
 }
@@ -756,7 +745,7 @@ body {
   color: #e6edf3;
   border: 1px solid #30363d;
   border-radius: 6px;
-  padding: 0.45rem 0.6rem;
+  padding: 0.4rem 0.5rem;
   font-size: 0.8rem;
   outline: none;
   resize: vertical;
@@ -769,29 +758,29 @@ body {
 
 .perfil-editor__headers {
   display: grid;
-  grid-template-columns: 2rem 1fr 1fr 1fr 2rem;
-  gap: 0.5rem;
-  margin-bottom: 0.4rem;
+  grid-template-columns: 1.5rem 1fr 1fr 1fr 1.5rem;
+  gap: 0.3rem;
+  margin-bottom: 0.3rem;
 }
 
 .perfil-editor__header {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: #8b949e;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-align: center;
 }
 
 .perfil-editor__row {
   display: grid;
-  grid-template-columns: 2rem 1fr 1fr 1fr 2rem;
-  gap: 0.5rem;
+  grid-template-columns: 1.5rem 1fr 1fr 1fr 1.5rem;
+  gap: 0.3rem;
   align-items: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .perfil-editor__num {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: #8b949e;
   text-align: center;
 }
@@ -799,7 +788,7 @@ body {
 .perfil-editor__field {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.15rem;
 }
 
 .perfil-editor__input {
@@ -807,9 +796,9 @@ body {
   background-color: #1c2128;
   color: #e6edf3;
   border: 1px solid #30363d;
-  border-radius: 6px;
-  padding: 0.35rem 0.5rem;
-  font-size: 0.8rem;
+  border-radius: 5px;
+  padding: 0.3rem 0.35rem;
+  font-size: 0.75rem;
   text-align: right;
   outline: none;
 }
@@ -819,18 +808,18 @@ body {
 }
 
 .perfil-editor__unit {
-  font-size: 0.65rem;
+  font-size: 0.55rem;
   color: #8b949e;
   white-space: nowrap;
 }
 
 .perfil-editor__btn-remove {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.3rem;
+  height: 1.3rem;
   background: none;
   border: 1px solid #30363d;
   color: #8b949e;
-  font-size: 1rem;
+  font-size: 0.85rem;
   border-radius: 4px;
   cursor: pointer;
   display: flex;
@@ -849,21 +838,29 @@ body {
   cursor: not-allowed;
 }
 
+.perfil-editor__duracion {
+  font-size: 0.7rem;
+  color: #8b949e;
+  text-align: right;
+  margin-top: 0.4rem;
+}
+
 .perfil-editor__actions {
   display: flex;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
 }
 
 .perfil-editor__btn-add {
-  flex: 1;
-  padding: 0.5rem;
+  flex: 0 0 auto;
+  padding: 0.4rem 0.6rem;
   background: none;
   border: 1px dashed #30363d;
   color: #8b949e;
-  font-size: 0.8rem;
-  border-radius: 8px;
+  font-size: 0.75rem;
+  border-radius: 6px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .perfil-editor__btn-add:hover:not(:disabled) {
@@ -876,14 +873,36 @@ body {
   cursor: not-allowed;
 }
 
+.perfil-editor__btn-save {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  background-color: #1f6feb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.perfil-editor__btn-save:hover:not(:disabled) {
+  background-color: #388bfd;
+}
+
+.perfil-editor__btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .perfil-editor__btn-send {
   flex: 1;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.6rem;
   background-color: #238636;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-size: 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.15s;
@@ -898,31 +917,114 @@ body {
   cursor: not-allowed;
 }
 
-.perfil-editor__duracion {
-  font-size: 0.75rem;
-  color: #8b949e;
-  text-align: right;
-  margin-top: 0.5rem;
+/* ========================================
+   TABLET (>=640px)
+   ======================================== */
+
+@media (min-width: 640px) {
+  .app {
+    padding: 1.5rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .top-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .bottom-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .control-row {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .control-row > * {
+    flex: 1;
+  }
+
+  .temperature-card__value {
+    font-size: 3.5rem;
+  }
+
+  .temperature-card__unit {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .perfil-editor__headers {
+    grid-template-columns: 2rem 1fr 1fr 1fr 2rem;
+    gap: 0.5rem;
+  }
+
+  .perfil-editor__row {
+    grid-template-columns: 2rem 1fr 1fr 1fr 2rem;
+    gap: 0.5rem;
+  }
+
+  .perfil-editor__input {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .perfil-editor__btn-remove {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
 }
 
-.perfil-editor__btn-save {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  background-color: #1f6feb;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.15s;
-}
+/* ========================================
+   DESKTOP (>=900px)
+   ======================================== */
 
-.perfil-editor__btn-save:hover:not(:disabled) {
-  background-color: #388bfd;
-}
+@media (min-width: 900px) {
+  .app {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+  }
 
-.perfil-editor__btn-save:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  .header__title {
+    font-size: 1.5rem;
+  }
+
+  .temperature-card__value {
+    font-size: 4.5rem;
+  }
+
+  .temperature-card__unit {
+    font-size: 1.75rem;
+  }
+
+  .temperature-card__arrow {
+    font-size: 1.5rem;
+  }
+
+  .fase-card__timer-display {
+    font-size: 2.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .top-row {
+    gap: 1.5rem;
+  }
+
+  .bottom-row {
+    gap: 1.5rem;
+  }
+
+  .control-row {
+    gap: 1.5rem;
+  }
 }
