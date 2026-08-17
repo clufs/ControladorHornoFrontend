@@ -40,17 +40,14 @@ export function useHorno() {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [trend, setTrend] = useState<Trend>("stable");
-  const [trend2, setTrend2] = useState<Trend>("stable");
   const [controlStatus, setControlStatus] = useState<ControlStatus>(DEFAULT_CONTROL);
   const historyRef = useRef<HistoryEntry[]>([]);
   const prevTempRef = useRef<number | null>(null);
-  const prevTemp2Ref = useRef<number | null>(null);
 
   const handleLectura = useCallback((data: LecturaHorno) => {
     const entry: HistoryEntry = {
       id: String(++counter),
       temp: data.temp_c,
-      temp2: data.temp2_c,
       time: Math.floor(Date.now() / 1000),
       formattedTime: formatTime(),
       fase_actual: data.fase_actual,
@@ -64,10 +61,6 @@ export function useHorno() {
     const prevTemp = prevTempRef.current;
     prevTempRef.current = data.temp_c;
     setTrend(calcTrend(prevTemp, data.temp_c));
-
-    const prevTemp2 = prevTemp2Ref.current;
-    prevTemp2Ref.current = data.temp2_c ?? null;
-    setTrend2(calcTrend(prevTemp2, data.temp2_c ?? null));
 
     setCurrentLectura(data);
     historyRef.current = [...historyRef.current.slice(-(MAX_HISTORY - 1)), entry];
@@ -103,7 +96,6 @@ export function useHorno() {
   }, [handleLectura, handleStatus]);
 
   const currentTemp = currentLectura?.temp_c ?? null;
-  const currentTemp2 = currentLectura?.temp2_c ?? null;
 
-  return { currentLectura, currentTemp, currentTemp2, history, isConnected, trend, trend2, controlStatus };
+  return { currentLectura, currentTemp, history, isConnected, trend, controlStatus };
 }

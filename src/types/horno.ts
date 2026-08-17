@@ -1,6 +1,5 @@
 export interface LecturaHorno {
   temp_c: number;
-  temp2_c?: number;
   tasa_c_min: number;
   fase_actual: string;
   alert_flags: number;
@@ -12,7 +11,6 @@ export interface LecturaHorno {
 export interface HistoryEntry {
   id: string;
   temp: number;
-  temp2?: number;
   time: number;
   formattedTime: string;
   fase_actual?: string;

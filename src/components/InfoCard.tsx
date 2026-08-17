@@ -16,13 +16,7 @@ export function InfoCard({ lectura }: InfoCardProps) {
           </span>
         </div>
         <div className="info-card__item">
-          <span className="info-card__label">T2</span>
-          <span className="info-card__value">
-            {lectura && lectura.temp2_c !== undefined ? `${lectura.temp2_c}°C` : "---"}
-          </span>
-        </div>
-        <div className="info-card__item">
-          <span className="info-card__label">Temp. Máxima</span>
+          <span className="info-card__label">Temp. Maxima</span>
           <span className="info-card__value">
             {lectura ? `${lectura.temp_max}°C` : "---"}
           </span>
@@ -42,7 +36,7 @@ export function InfoCard({ lectura }: InfoCardProps) {
         <div className="info-card__item">
           <span className="info-card__label">Alertas</span>
           <span className="info-card__value">
-            {lectura !== null ? (lectura.alert_flags ? "⚠ Activa" : "Normal") : "---"}
+            {lectura !== null ? (lectura.alert_flags ? "Activa" : "Normal") : "---"}
           </span>
         </div>
       </div>

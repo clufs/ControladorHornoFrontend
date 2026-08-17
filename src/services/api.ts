@@ -2,7 +2,6 @@ const API_BASE = "/api";
 
 export interface HistorialPoint {
   temperatura: number;
-  temperatura2?: number;
   minutosDesdeInicio: number;
   timestamp: string;
 }

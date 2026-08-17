@@ -176,7 +176,6 @@ export function HistorialView({
                   labelStyle={{ color: "#8b949e" }}
                   formatter={(value, name) => {
                     if (name === "temperatura") return [`${value}°C`, "T1"];
-                    if (name === "temperatura2") return [`${value}°C`, "T2"];
                     return [`${value}°C/min`, "Tasa"];
                   }}
                   labelFormatter={(label) => `${label} min`}
@@ -191,16 +190,6 @@ export function HistorialView({
                   dot={false}
                   activeDot={{ r: 4, fill: "#58a6ff" }}
                   name="temperatura"
-                />
-                <Line
-                  yAxisId="temp"
-                  type="monotone"
-                  dataKey="temperatura2"
-                  stroke="#f0883e"
-                  strokeWidth={2}
-                  dot={false}
-                  activeDot={{ r: 4, fill: "#f0883e" }}
-                  name="temperatura2"
                 />
                 <Line
                   yAxisId="tasa"

@@ -12,7 +12,7 @@ import { useHistorial } from "./hooks/useHistorial";
 import { usePhaseTimer } from "./hooks/usePhaseTimer";
 
 export default function App() {
-  const { currentLectura, currentTemp, currentTemp2, history, isConnected, trend, trend2, controlStatus } = useHorno();
+  const { currentLectura, currentTemp, history, isConnected, trend, controlStatus } = useHorno();
   const {
     historial,
     currentRate,
@@ -37,7 +37,6 @@ export default function App() {
 
       <div className="top-row">
         <TemperatureCard label="T1" temp={currentTemp} trend={trend} />
-        <TemperatureCard label="T2" temp={currentTemp2} trend={trend2} />
         <FaseCard
           fase={currentLectura?.fase_actual ?? null}
           timerRemainingSec={timer.remainingSec}
@@ -72,7 +71,7 @@ export default function App() {
             {latestEntries.map((entry) => (
               <li key={entry.id} className="history-list__item">
                 <span>{entry.formattedTime}</span>
-                <span className="history-list__temp">T1:{entry.temp}°C{entry.temp2 !== undefined ? ` T2:${entry.temp2}°C` : ""}</span>
+                <span className="history-list__temp">T1:{entry.temp}°C</span>
               </li>
             ))}
           </ul>
